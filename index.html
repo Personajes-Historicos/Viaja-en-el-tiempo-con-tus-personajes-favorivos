@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viaja en el Tiempo con los Mejores Personajes</title>
+    <style>
+        /* Estilo base */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to bottom, #004d40, #002f2b);
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            text-align: center;
+            padding: 40px 20px;
+        }
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+            color: #ffcc00;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+        main {
+            padding: 20px;
+        }
+        .subject {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .subject div {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid #ffffff;
+            padding: 20px;
+            border-radius: 20px;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+        }
+        .subject div:hover {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+        }
+        .subject h2 {
+            font-size: 1.8rem;
+            margin: 0;
+            color: #ffeb3b;
+        }
+        .character-list {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .character {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px auto;
+            max-width: 350px;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 20px;
+        }
+        .character img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ffffff;
+        }
+        .character:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+        }
+        .chat-box {
+            background-color: #ffffff;
+            color: #333;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+            max-width: 600px;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .chat-box input {
+            width: 80%;
+            padding: 10px;
+            border: 2px solid #00796b;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-size: 1rem;
+        }
+        .chat-box button {
+            background-color: #ffcc00;
+            color: #004d40;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            margin-top: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            font-size: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .chat-box button:hover {
+            background-color: #ffaa00;
+            transform: scale(1.05);
+        }
+        .response {
+            background-color: #f1f1f1;
+            color: #333;
+            padding: 15px;
+            border-radius: 15px;
+            margin: 20px 0;
+            text-align: left;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Viaja en el Tiempo con los Mejores Personajes</h1>
+</header>
+<main>
+    <div class="subject">
+        <div onclick="toggleCharacterList('psychology')">
+            <h2>Psicología</h2>
+        </div>
+        <div onclick="toggleCharacterList('graphic-design')">
+            <h2>Diseño Gráfico</h2>
+        </div>
+        <div onclick="toggleCharacterList('physiotherapy')">
+            <h2>Fisioterapia</h2>
+        </div>
+    </div>
+    
+    <div id="psychology-list" class="character-list">
+        <div class="character" onclick="startChat('Sigmund Freud')">
+            <img src="freud.jpg" alt="Sigmund Freud">
+            Sigmund Freud
+        </div>
+        <div class="character" onclick="startChat('Carl Jung')">
+            <img src="jung.jpg" alt="Carl Jung">
+            Carl Jung
+        </div>
+        <div class="character" onclick="startChat('B.F. Skinner')">
+            <img src="skinner.jpg" alt="B.F. Skinner">
+            B.F. Skinner
+        </div>
+        <div class="character" onclick="startChat('Abraham Maslow')">
+            <img src="maslow.jpg" alt="Abraham Maslow">
+            Abraham Maslow
+        </div>
+        <div class="character" onclick="startChat('Wilhelm Wundt')">
+            <img src="wundt.jpg" alt="Wilhelm Wundt">
+            Wilhelm Wundt
+        </div>
+        <div class="character" onclick="startChat('Ivan Pavlov')">
+            <img src="pavlov.jpg" alt="Ivan Pavlov">
+            Ivan Pavlov
+        </div>
+        <div class="character" onclick="startChat('John Watson')">
+            <img src="watson.jpg" alt="John Watson">
+            John Watson
+        </div>
+        <div class="character" onclick="startChat('Karen Horney')">
+            <img src="horney.jpg" alt="Karen Horney">
+            Karen Horney
+        </div>
+        <div class="character" onclick="startChat('Erik Erikson')">
+            <img src="erikson.jpg" alt="Erik Erikson">
+            Erik Erikson
+        </div>
+        <div class="character" onclick="startChat('Rollo May')">
+            <img src="may.jpg" alt="Rollo May">
+            Rollo May
+        </div>
+    </div>
+    <div id="graphic-design-list" class="character-list">
+        <div class="character" onclick="startChat('Paul Rand')">
+            <img src="rand.jpg" alt="Paul Rand">
+            Paul Rand
+        </div>
+        <div class="character" onclick="startChat('Milton Glaser')">
+            <img src="glaser.jpg" alt="Milton Glaser">
+            Milton Glaser
+        </div>
+        <div class="character" onclick="startChat('Lester Beall')">
+            <img src="beall.jpg" alt="Lester Beall">
+            Lester Beall
+        </div>
+        <div class="character" onclick="startChat('Saul Bass')">
+            <img src="bass.jpg" alt="Saul Bass">
+            Saul Bass
+        </div>
+        <div class="character" onclick="startChat('Wendell Castle')">
+            <img src="castle.jpg" alt="Wendell Castle">
+            Wendell Castle
+        </div>
+        <div class="character" onclick="startChat('Jan Tschichold')">
+            <img src="tschichold.jpg" alt="Jan Tschichold">
+            Jan Tschichold
+        </div>
+        <div class="character" onclick="startChat('David Carson')">
+            <img src="carson.jpg" alt="David Carson">
+            David Carson
+        </div>
+        <div class="character" onclick="startChat('Paula Scher')">
+            <img src="scher.jpg" alt="Paula Scher">
+            Paula Scher
+        </div>
+        <div class="character" onclick="startChat('Massimo Vignelli')">
+            <img src="vignelli.jpg" alt="Massimo Vignelli">
+          Massimo Vignelli
+        
+        </div>
+        <div class="character" onclick="startChat('Herb Lubalin')">
+            <img src="lubalin.jpg" alt="Herb Lubalin">
+            Herb Lubalin
+        </div>
+    </div>
+    
+    <div id="physiotherapy-list" class="character-list">
+        <div class="character" onclick="startChat('Andreas Vesalio')">
+            <img src="vesalio.jpg" alt="Andreas Vesalio">
+            Andreas Vesalio
+        </div>
+        <div class="character" onclick="startChat('Hipócrates')">
+            <img src="hipocrates.jpg" alt="Hipócrates">
+            Hipócrates
+        </div>
+        <div class="character" onclick="startChat('Florence Nightingale')">
+            <img src="nightingale.jpg" alt="Florence Nightingale">
+            Florence Nightingale
+        </div>
+        <div class="character" onclick="startChat('Rene Laennec')">
+            <img src="laennec.jpg" alt="Rene Laennec">
+            Rene Laennec
+        </div>
+        <div class="character" onclick="startChat('Louis Pasteur')">
+            <img src="pasteur.jpg" alt="Louis Pasteur">
+            Louis Pasteur
+        </div>
+        <div class="character" onclick="startChat('Claudia M. S. D. Oliveira')">
+            <img src="claudia.jpg" alt="Claudia M. S. D. Oliveira">
+            Claudia M. S. D. Oliveira
+        </div>
+        <div class="character" onclick="startChat('Elizabeth Kenny')">
+            <img src="kenny.jpg" alt="Elizabeth Kenny">
+            Elizabeth Kenny
+        </div>
+        <div class="character" onclick="startChat('Paul C. Lauterbur')">
+            <img src="lauterbur.jpg" alt="Paul C. Lauterbur">
+            Paul C. Lauterbur
+        </div>
+        <div class="character" onclick="startChat('Thomas Sydenham')">
+            <img src="sydenham.jpg" alt="Thomas Sydenham">
+            Thomas Sydenham
+        </div>
+        <div class="character" onclick="startChat('John Harvey Kellogg')">
+            <img src="kellogg.jpg" alt="John Harvey Kellogg">
+            John Harvey Kellogg
+        </div>
+    </div>
+    
+    <div id="chat-box-container"></div>
+    </main>
+<script>
+    const OPENAI_API_KEY = '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'; // Reemplaza con tu API key
+
+    function toggleCharacterList(subject) {
+        const lists = document.querySelectorAll('.character-list');
+        lists.forEach(list => list.style.display = 'none');
+        const selectedList = document.getElementById(`${subject}-list`);
+        if (selectedList) {
+            selectedList.style.display = 'block';
+        }
+    }
+
+    function startChat(characterName) {
+        const chatBoxContainer = document.getElementById('chat-box-container');
+        chatBoxContainer.innerHTML = `
+            <div class="chat-box">
+                <h3>Conversación con ${characterName}</h3>
+                <div id="response-container"></div>
+                <input type="text" id="user-input" placeholder="Haz una pregunta...">
+                <button onclick="askQuestion('${characterName}')">Enviar</button>
+            </div>
+        `;
+    }
+
+    function askQuestion(characterName) {
+        const userInput = document.getElementById('user-input').value.trim();
+        if (userInput) {
+            generateResponse(characterName, userInput);
+        } else {
+            alert('Por favor, escribe una pregunta.');
+        }
+    }
+
+    function generateResponse(characterName, question) {
+        const responseContainer = document.getElementById('response-container');
+        responseContainer.innerHTML = '<div class="response">Cargando...</div>';
+        const headers = {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${OPENAI_API_KEY}`,
+        };
+        const body = JSON.stringify({
+            model: 'gpt-3.5-turbo',
+            messages: [
+                { role: 'system', content: `Estás conversando con ${characterName}, un experto en su campo.` },
+                { role: 'user', content: question }
+            ],
+        });
+        fetch('https://api.openai.com/v1/chat/completions', { method: 'POST', headers, body })
+            .then(response => response.json())
+            .then(data => {
+                const responseText = data.choices[0]?.message?.content || "No se obtuvo respuesta.";
+                responseContainer.innerHTML = `<div class="response">${responseText}</div>`;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                responseContainer.innerHTML = '<div class="response">Hubo un error. Por favor, intenta nuevamente.</div>';
+            });
+    }
+</script>
+</body>
+</html>
